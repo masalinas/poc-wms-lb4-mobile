@@ -1,0 +1,7 @@
+{
+  "name": "wms-lb4-pov-mob-ui",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
