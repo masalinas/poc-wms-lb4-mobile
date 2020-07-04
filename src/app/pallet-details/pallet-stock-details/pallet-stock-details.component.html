@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Stocks</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/pallets"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list-header>
+      Stock List
+    </ion-list-header>
+
+    <ion-item *ngFor = "let stock of stocks;">
+      {{stock.id}}
+    </ion-item>
+  </ion-list>
+</ion-content>

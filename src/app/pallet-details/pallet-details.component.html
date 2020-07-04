@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Pallets</ion-title>
+    <ion-back-button defaultHref="/"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-list-header>
+      Pallet List
+    </ion-list-header>
+
+    <ion-item detail *ngFor = "let pallet of pallets;" (click)="onStockPallet(pallet)">
+      {{pallet.sscc}}
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -4,8 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-import { Pallet } from './shared/services/backend/model/models';
-import { UserControllerService, PalletControllerService } from './shared/services/backend/api/api';
+import { UserControllerService } from './shared/services/backend/api/api';
 
 @Component({
   selector: 'app-root',
@@ -13,8 +12,16 @@ import { UserControllerService, PalletControllerService } from './shared/service
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  public username = "masalinas.gancedo@gmail.com";
+  public password = "underground";
+
   public selectedIndex = 0;
   public appPages = [
+    {
+      title: 'Pallets',
+      url: '/pallets',
+      icon: 'mail'
+    },
     {
       title: 'Inbox',
       url: '/folder/Inbox',
@@ -48,14 +55,11 @@ export class AppComponent implements OnInit {
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-  public pallets: Pallet[];
-
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private userControllerService: UserControllerService,
-    private palletControllerService: PalletControllerService
+    private userControllerService: UserControllerService
   ) {
     this.initializeApp();
   }
@@ -77,27 +81,13 @@ export class AppComponent implements OnInit {
   }
 
   private login() {
-    this.userControllerService.userControllerLogin({email: 'masalinas.gancedo@gmail.com', password: 'underground'}).subscribe((result: any) => {
+    this.userControllerService.userControllerLogin({email: this.username, password: this.password}).subscribe((result: any) => {
       localStorage.setItem('token', result.token);
 
-      this.getPallets();
+      console.log(result.token);
     },
     err => {
       console.log(err);
     });
-  }
-
-  private getPallets() {
-    let filter: any = {filter: JSON.stringify({include: [{relation: "palletType"}, {relation: "stocks"}]})};
-
-    this.palletControllerService.palletControllerFind(filter).subscribe((pallets: any) => {
-       this.pallets = pallets;
-
-       console.log(pallets);
-       //this.loadGrid();
-      },
-      err => {
-        console.log(err);
-      });
   }
 }
