@@ -1,2 +1,2 @@
 # wms-lb4-poc-mobile
-WMS PoC Ionic Mobile
+WMS PoC Loopback 4 Ionic Mobile
