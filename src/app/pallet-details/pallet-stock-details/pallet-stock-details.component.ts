@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Router, ParamMap } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
-import { Stock } from '../../shared/services/backend/model/models';
+import { ModalController } from '@ionic/angular';
+
+import { Pallet, Stock } from '../../shared/services/backend/model/models';
 
 @Component({
   selector: 'pallet-stock-details',
@@ -9,13 +11,25 @@ import { Stock } from '../../shared/services/backend/model/models';
   styleUrls: ['./pallet-stock-details.component.css']
 })
 export class PalletStockDetailsComponent implements OnInit {
-    public stocks: Stock[];
+    @Input() pallet: any;
 
-    constructor(private router: Router) {
+    constructor(private router: Router,
+                private modalController: ModalController,
+                private activatedroute: ActivatedRoute) {
     }
 
     ngOnInit() {
+      //this.pallet = JSON.parse(this.activatedroute.snapshot.paramMap.get("pallet"));
+
       //let pallet = this.router.pallet.paramMap.get("pallet");
-      //console.log(pallet);
+      console.log(this.pallet);
+    }
+
+    closeModal() {
+      // using the injected ModalController this page
+      // can "dismiss" itself and optionally pass back data
+      this.modalController.dismiss({
+        'dismissed': true
+      });
     }
 }
