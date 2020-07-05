@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{tittle}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelModal()">Cancel</ion-button>
+    </ion-buttons>
+    <ion-buttons slot="start">
+      <ion-button (click)="okModal()" [disabled]="!stockFormGroup.valid">Ok</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="stockFormGroup">
+    <ion-item>
+      <ion-label>Products<ion-text color="danger">*</ion-text></ion-label>
+      <ion-select required formControlName="productId" placeholder="Select Product ...">
+        <ion-select-option *ngFor="let product of products" value="{{product.id}}">{{product.description}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Lot</ion-label>
+      <ion-input type="text" formControlName="lot" placeholder="Select Lot"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Expedition Date</ion-label>
+      <ion-datetime formControlName="expeditionDate" placeholder="Select Date"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Serial Number</ion-label>
+      <ion-input type="text" formControlName="serialNumber" placeholder="Select Serial Number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantity<ion-text color="danger">*</ion-text></ion-label>
+      <ion-input type="number" formControlName="quantity" placeholder="Select Quantity"></ion-input>
+    </ion-item>
+  </form>
+</ion-content>

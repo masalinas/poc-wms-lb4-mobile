@@ -1,11 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Stocks</ion-title>
-    <!--<ion-buttons slot="start">
+    <ion-buttons slot="start">
       <ion-back-button defaultHref="/pallets"></ion-back-button>
-    </ion-buttons>-->
+    </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button (click)="closeModal()">Close</ion-button>
+      <ion-button (click)="onShowActionsMenuSheet()">Actions Menu</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -16,7 +16,7 @@
       Stock List
     </ion-list-header>
 
-    <ion-item *ngFor = "let stock of pallet.stocks;">
+    <ion-item *ngFor = "let stock of stocks;">
       <ion-label>
           <h2>{{stock.product.description}}</h2>
           <p *ngIf="stock.quantity">Quantity: {{stock.quantity}}</p>

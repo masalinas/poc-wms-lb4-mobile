@@ -23,7 +23,6 @@ export class PalletDetailsComponent {
     }
 
     private getPallets() {
-      //let filter: any = {filter: JSON.stringify({include: [{relation: "palletType"}, {relation: "stocks"}]})};
       let filter: any = {filter: JSON.stringify({include: [{relation: "palletType"}, {relation: "stocks", scope: {include: [{relation: "product"}]}}]})};
 
       this.palletControllerService.palletControllerFind(filter).subscribe((pallets: any) => {
@@ -36,13 +35,11 @@ export class PalletDetailsComponent {
       });
     }
 
-    /*public onStockPallet(pallet) {
-      console.log(pallet);
+    public onStockPallet(pallet) {
+      this.router.navigate(['pallets/pallet-stock', {pallet: JSON.stringify(pallet)}]);
+    }
 
-      this.router.navigate(['pallets/pallet-stock', {pallet: pallet}]);
-    }*/
-
-    async onStockPallet(pallet) {
+    /*async onStockPallet(pallet) {
       const modal = await this.modalController.create({
         component: PalletStockDetailsComponent,
         componentProps: {
@@ -51,5 +48,5 @@ export class PalletDetailsComponent {
       });
 
       return await modal.present();
-    }
+    }*/
 }
