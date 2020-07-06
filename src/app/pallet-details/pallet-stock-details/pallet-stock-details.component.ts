@@ -65,17 +65,20 @@ export class PalletStockDetailsComponent implements OnInit {
         //cssClass: 'my-custom-class',
         buttons: [{
             text: 'Add Stock',
+            icon: 'add-circle',
             handler: () => {
               this.addStock(this.modalController);
             }
           }, {
             text: 'Remove Stock',
+            icon: 'remove-circle',
             handler: () => {
               this.removeStock(this.modalController);
             }
           },
           {
             text: 'Cancel',
+            icon: 'close',
             role: 'cancel'
           }
         ]

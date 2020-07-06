@@ -1,9 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Pallets</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <!--<ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>-->
+    <ion-title>Pallets</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,7 +17,8 @@
     </ion-list-header>
 
     <ion-item detail *ngFor = "let pallet of pallets;" (click)="onStockPallet(pallet)">
-      {{pallet.sscc}}<div class="dot" *ngIf="pallet.stocks && pallet.stocks.length > 0"></div>
+      <ion-label>{{pallet.sscc}}</ion-label>
+      <ion-badge slot="end" *ngIf="pallet.stocks && pallet.stocks.length > 0">{{pallet.stocks.length}}</ion-badge>
     </ion-item>
   </ion-list>
 </ion-content>

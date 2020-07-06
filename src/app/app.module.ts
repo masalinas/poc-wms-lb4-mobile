@@ -1,21 +1,24 @@
+// Angular modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+// Ionic modules
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
-// Interceptors
-import { AuthInterceptorService } from './auth-interceptor.service';
-
 // App environment
 import { environment } from '../environments/environment';
+
+// Auth Interceptor service
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 // Loopback services
 import { ApiModule, Configuration, ConfigurationParameters, BASE_PATH } from './shared/services/backend';
 
+// App component
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 

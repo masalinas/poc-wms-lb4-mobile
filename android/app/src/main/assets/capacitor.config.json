@@ -1,0 +1,13 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "wms-lb4-pov-mob-ui",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}
